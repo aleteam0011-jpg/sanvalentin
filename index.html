@@ -1,50 +1,108 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>San Valentín</title>
+<title>Nayeli♡</title>
+
 <style>
 body{
-text-align:center;
-font-family:Arial;
+margin:0;
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
 background:#ffe6e6;
-margin-top:100px;
+font-family:Arial, sans-serif;
+text-align:center;
+}
+
+.card{
+width:min(92vw, 420px);
+background:rgba(255,255,255,0.6);
+border-radius:20px;
+padding:20px;
+box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+
+.photo img{
+width:100%;
+border-radius:18px;
+margin-bottom:15px;
+}
+
+h1{
+font-size:28px;
+margin-bottom:20px;
+}
+
+.buttons{
+position:relative;
+height:120px;
 }
 
 button{
-padding:15px 30px;
+padding:14px 28px;
 font-size:20px;
-margin:20px;
 border:none;
-border-radius:10px;
+border-radius:14px;
 cursor:pointer;
-}
-
-#no{
-position:absolute;
-background:#ccc;
 }
 
 #yes{
 background:#ff4d6d;
 color:white;
+box-shadow:0 8px 20px rgba(255,77,109,0.4);
+}
+
+#no{
+background:#d9d9d9;
+position:absolute;
+right:20px;
+bottom:10px;
 }
 </style>
 </head>
 
 <body>
 
-<h1>¿Quieres ser mi San Valentín? ❤️</h1>
+<div class="card">
 
-<button id="yes"
-onclick="location.href='https://wa.me/13475587617?text=siii%20quiero%20ser%20tu%20san%20valentin%20%E2%9D%A4%EF%B8%8F'">
-Sí 💖
-</button>
+<div class="photo">
+<img src="nayeli.png" alt="Nayeli Anime">
+</div>
 
+<h1>Nayeli♡, ¿quieres ser mi San Valentín? ❤️</h1>
+
+<div class="buttons">
+<button id="yes">Sí 💖</button>
 <button id="no">No 😈</button>
+</div>
+
+</div>
 
 <script>
-let noBtn = document.getElementById("no");
 
-noBtn.addEventListener("mouseover", function(){
-let x = Math.random
+const yesBtn = document.getElementById("yes");
+const noBtn = document.getElementById("no");
+
+yesBtn.addEventListener("click", function(){
+window.location.href="https://wa.me/13475587617?text=nayeli%E2%99%A1%20siii%20quiero%20ser%20tu%20san%20valentin%20%E2%9D%A4%EF%B8%8F";
+});
+
+function mover(){
+let x = Math.random()*(window.innerWidth-100);
+let y = Math.random()*(window.innerHeight-100);
+
+noBtn.style.position="absolute";
+noBtn.style.left=x+"px";
+noBtn.style.top=y+"px";
+}
+
+noBtn.addEventListener("mouseover", mover);
+noBtn.addEventListener("touchstart", mover);
+noBtn.addEventListener("click", mover);
+
+</script>
+
+</body>
+</html>
