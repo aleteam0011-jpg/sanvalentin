@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>San Valentín</title>
+<style>
+body{
+text-align:center;
+font-family:Arial;
+background:#ffe6e6;
+margin-top:100px;
+}
+
+button{
+padding:15px 30px;
+font-size:20px;
+margin:20px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+}
+
+#no{
+position:absolute;
+background:#ccc;
+}
+
+#yes{
+background:#ff4d6d;
+color:white;
+}
+</style>
+</head>
+
+<body>
+
+<h1>¿Quieres ser mi San Valentín? ❤️</h1>
+
+<button id="yes"
+onclick="location.href='https://wa.me/13475587617?text=siii%20quiero%20ser%20tu%20san%20valentin%20%E2%9D%A4%EF%B8%8F'">
+Sí 💖
+</button>
+
+<button id="no">No 😈</button>
+
+<script>
+let noBtn = document.getElementById("no");
+
+noBtn.addEventListener("mouseover", function(){
+let x = Math.random
