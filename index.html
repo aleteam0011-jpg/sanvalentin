@@ -2,106 +2,237 @@
 <html lang="es">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nayeli♡</title>
+<title>para ti</title>
 
 <style>
-body{
-margin:0;
-min-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-background:#ffe6e6;
-font-family:Arial, sans-serif;
-text-align:center;
-}
+  body{
+    margin:0;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#ffe6e6;
+    font-family: Arial, sans-serif;
+    text-align:center;
+    padding:18px;
+  }
 
-.card{
-width:min(92vw, 420px);
-background:rgba(255,255,255,0.6);
-border-radius:20px;
-padding:20px;
-box-shadow:0 10px 25px rgba(0,0,0,0.15);
-}
+  .card{
+    width:min(92vw, 460px);
+    background:rgba(255,255,255,0.72);
+    border-radius:20px;
+    padding:18px;
+    box-shadow:0 12px 28px rgba(0,0,0,0.14);
+  }
 
-.photo img{
-width:100%;
-border-radius:18px;
-margin-bottom:15px;
-}
+  .photo{
+    border-radius:18px;
+    overflow:hidden;
+    margin-bottom:14px;
+    background:#fff;
+  }
+  .photo img{
+    width:100%;
+    height:auto;
+    display:block;
+  }
 
-h1{
-font-size:28px;
-margin-bottom:20px;
-}
+  h1{
+    margin:10px 0 12px;
+    font-size:26px;
+    line-height:1.2;
+  }
 
-.buttons{
-position:relative;
-height:120px;
-}
+  /* caja del texto */
+  .msgBox{
+    text-align:left;
+    background:rgba(255,255,255,0.65);
+    border-radius:16px;
+    padding:14px 14px;
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05);
+    margin: 10px 0 16px;
+    font-size:15px;
+    line-height:1.45;
+  }
 
-button{
-padding:14px 28px;
-font-size:20px;
-border:none;
-border-radius:14px;
-cursor:pointer;
-}
+  .line{
+    margin: 0 0 10px 0;
+    white-space: pre-wrap;
+  }
 
-#yes{
-background:#ff4d6d;
-color:white;
-box-shadow:0 8px 20px rgba(255,77,109,0.4);
-}
+  /* cursor que parpadea */
+  .cursor{
+    display:inline-block;
+    width:10px;
+    animation: blink 0.9s infinite;
+    font-weight:700;
+  }
+  @keyframes blink{
+    0%,49%{opacity:1}
+    50%,100%{opacity:0}
+  }
 
-#no{
-background:#d9d9d9;
-position:absolute;
-right:20px;
-bottom:10px;
-}
+  .buttons{
+    position:relative;
+    height:120px;
+    margin-top:8px;
+  }
+
+  button{
+    padding:14px 28px;
+    font-size:20px;
+    border:none;
+    border-radius:14px;
+    cursor:pointer;
+    user-select:none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  #yes{
+    background:#ff4d6d;
+    color:white;
+    box-shadow:0 8px 20px rgba(255,77,109,0.35);
+  }
+
+  #no{
+    background:#d9d9d9;
+    position:absolute;
+    right:18px;
+    bottom:8px;
+  }
+
+  .hint{
+    font-size:12px;
+    opacity:0.7;
+    margin-top:8px;
+  }
 </style>
 </head>
 
 <body>
 
 <div class="card">
+  <div class="photo">
+    <img src="image.jpg" alt="foto">
+  </div>
 
-<div class="photo">
-<img src="nayeli.png" alt="Nayeli Anime">
-</div>
+  <h1>tengo algo para decirte 🙂</h1>
 
-<h1>Nayeli♡, ¿quieres ser mi San Valentín? ❤️</h1>
+  <div class="msgBox">
+    <p class="line" id="l1"></p>
+    <p class="line" id="l2"></p>
+    <p class="line" id="l3"></p>
+    <p class="line" id="l4"></p>
+    <p class="line" id="l5"></p>
+    <p class="line" id="l6"></p>
+    <span class="cursor" id="cursor">|</span>
+  </div>
 
-<div class="buttons">
-<button id="yes">Sí 💖</button>
-<button id="no">No 😈</button>
-</div>
+  <div class="buttons">
+    <button id="yes">sí 💖</button>
+    <button id="no">no 😈</button>
+  </div>
 
+  <div class="hint">si tocas “no”… se pone tímido 😏</div>
 </div>
 
 <script>
+  // ✅ mensaje (tal cual lo pediste, ordenado en líneas)
+  const lines = [
+    "oye… solo quería decirte algo con cariño 🙂",
+    "",
+    "gracias por tu amistad y por los momentos en que hemos hablado. me pareces una persona muy bonita por dentro, amable y tierna, y valoro mucho poder conversar contigo aunque sea de vez en cuando.",
+    "",
+    "si alguna vez fui intenso o te escribí demasiado, lo siento — nunca fue con mala intención. solo disfruto hablar contigo.",
+    "",
+    "no quiero ponerte presión ni incomodarte, solo ser sincero: me agradas y aprecio lo que compartimos, sea como sea.",
+    "",
+    "y si algún día necesitas espacio o no te nace responder, lo entiendo completamente. lo importante para mí es que estés bien 🙂",
+    "",
+    "quiero ser honesto contigo… me gustas, pero también respeto mucho tu espacio. no espero nada, solo valoro poder hablar contigo y compartir momentos sencillos. gracias por tu manera de ser."
+  ];
 
-const yesBtn = document.getElementById("yes");
-const noBtn = document.getElementById("no");
+  // Vamos a distribuir el texto en 6 bloques visuales
+  const blocks = [
+    document.getElementById("l1"),
+    document.getElementById("l2"),
+    document.getElementById("l3"),
+    document.getElementById("l4"),
+    document.getElementById("l5"),
+    document.getElementById("l6"),
+  ];
 
-yesBtn.addEventListener("click", function(){
-window.location.href="https://wa.me/13475587617?text=siii%20quiero%20ser%20tu%20san%20valentin%20%E2%9D%A4%EF%B8%8F";
-});
+  const cursor = document.getElementById("cursor");
 
-function mover(){
-let x = Math.random()*(window.innerWidth-100);
-let y = Math.random()*(window.innerHeight-100);
+  // Une lines en párrafos (separados por "")
+  const paragraphs = [];
+  let cur = [];
+  for (const s of lines){
+    if (s === ""){
+      if (cur.length) { paragraphs.push(cur.join(" ")); cur = []; }
+    } else {
+      cur.push(s);
+    }
+  }
+  if (cur.length) paragraphs.push(cur.join(" "));
 
-noBtn.style.position="absolute";
-noBtn.style.left=x+"px";
-noBtn.style.top=y+"px";
-}
+  // typewriter: escribe un párrafo por bloque
+  async function typeText(el, text, speed=18){
+    el.textContent = "";
+    for (let i=0;i<text.length;i++){
+      el.textContent += text[i];
+      await new Promise(r => setTimeout(r, speed));
+    }
+  }
 
-noBtn.addEventListener("mouseover", mover);
-noBtn.addEventListener("touchstart", mover);
-noBtn.addEventListener("click", mover);
+  async function run(){
+    // limpia
+    blocks.forEach(b => b.textContent = "");
+    cursor.style.display = "inline-block";
 
+    // escribe hasta 6 párrafos (si hay más, los juntamos al último)
+    const toWrite = paragraphs.slice(0,6);
+    if (paragraphs.length > 6){
+      toWrite[5] = toWrite[5] + "\n\n" + paragraphs.slice(6).join("\n\n");
+    }
+
+    for (let i=0;i<toWrite.length;i++){
+      await typeText(blocks[i], toWrite[i], 16);
+      await new Promise(r => setTimeout(r, 250));
+    }
+
+    // termina
+    cursor.style.display = "none";
+  }
+
+  run();
+
+  // ✅ whatsapp link (tu número + mensaje corto, sin nombre)
+  const waLink = "https://wa.me/13475587617?text=siii%20quiero%20ser%20tu%20San%20Valentin%20%E2%99%A1%E2%9D%A4%EF%B8%8F";
+
+  document.getElementById("yes").addEventListener("click", () => {
+    window.location.href = waLink;
+  });
+
+  // ✅ botón NO se mueve (cel + compu)
+  const noBtn = document.getElementById("no");
+
+  function moverNo(){
+    const pad = 20;
+    const maxX = window.innerWidth  - noBtn.offsetWidth  - pad;
+    const maxY = window.innerHeight - noBtn.offsetHeight - pad;
+
+    const x = Math.max(pad, Math.floor(Math.random() * maxX));
+    const y = Math.max(pad, Math.floor(Math.random() * maxY));
+
+    noBtn.style.position = "absolute";
+    noBtn.style.left = x + "px";
+    noBtn.style.top  = y + "px";
+  }
+
+  noBtn.addEventListener("mouseover", moverNo);
+  noBtn.addEventListener("touchstart", (e) => { e.preventDefault(); moverNo(); }, {passive:false});
+  noBtn.addEventListener("click", moverNo);
 </script>
 
 </body>
